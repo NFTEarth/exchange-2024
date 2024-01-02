@@ -86,7 +86,6 @@ const HeroSection: FC<IProp> = ({ hideLink }) => {
             <Link href="/portfolio" passHref legacyBehavior>
               <Button
                 as="a"
-                color="tertiary"
                 size="large"
               >
                 Trade Collectibles Now

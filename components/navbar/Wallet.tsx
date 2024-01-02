@@ -46,7 +46,7 @@ const currencies = [
     },
     coinGeckoId: 'matic-network',
   },
-  {
+ /*{
     address: '0x7ceb23fd6bc0add59e62ac25578270cff1b9f619',
     symbol: 'WETH',
     decimals: polygon.nativeCurrency.decimals,
@@ -64,7 +64,7 @@ const currencies = [
       id: optimism.id,
       name: optimism.name,
     },
-    coinGeckoId: 'weth',
+    coinGeckoId: 'weth',*/
   },
 ]
 

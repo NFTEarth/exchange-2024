@@ -1,7 +1,9 @@
 import { FC } from 'react'
-import { Text, Box, Flex, Anchor, Button } from '../primitives'
+import { Text, Flex, Anchor, Button } from './primitives'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTwitter } from '@fortawesome/free-brands-svg-icons'
+import {faDiscord, faTelegram, faTelegramPlane, faTwitter} from '@fortawesome/free-brands-svg-icons'
+import {IconProp} from "@fortawesome/fontawesome-svg-core";
+
 
 type SectionTitleProps = {
   title: string
@@ -30,37 +32,57 @@ const SectionLink: FC<SectionLinkProps> = ({ name, href }) => (
   </Anchor>
 )
 
+const resourcesSectionLinks = [
+  {
+    name: 'Medium',
+    href: 'https://medium.com/@nftearth',
+  },
+  {
+    name: 'CoinGecko',
+    href: 'https://www.coingecko.com/en/coins/nftearth',
+  },
+  {
+    name: 'CoinMarketCap',
+    href: 'https://coinmarketcap.com/currencies/nftearth',
+  },
+  {
+    name: 'Contact: team@nftearth.exchange',
+    href: 'mailto:team@nftearth.exchange',
+  },
+]
+
 const developerSectionLinks = [
   {
     name: 'Docs',
-    href: 'https://docs.reservoir.tools/docs',
+    href: 'https://docs.nftearth.exchange',
   },
   {
-    name: 'API Reference',
-    href: 'https://docs.reservoir.tools/reference/overview',
+    name: 'GitHub',
+    href: 'https://github.com/NFTEarth',
   },
+
   {
-    name: 'Github',
-    href: 'https://github.com/reservoirprotocol',
-  },
-  {
-    name: 'Testnets',
-    href: 'https://testnets.reservoir.tools',
+    name: 'Brand Assets',
+    href: 'https://docs.nftearth.exchange/resources/brand-assets',
   },
 ]
 
 const companySectionLinks = [
   {
-    name: 'Jobs',
-    href: 'https://jobs.ashbyhq.com/reservoir',
+    name: 'Governance',
+    href: 'https://snapshot.org/#/nftearthl2.eth',
   },
   {
-    name: 'Terms of Use',
-    href: 'https://reservoir.tools/terms',
+    name: 'Governance Discussion',
+    href: 'https://discord.com/channels/1062256160264171520/1063532288866005043',
   },
   {
-    name: 'Privacy Policy',
-    href: 'https://reservoir.tools/privacy',
+    name: 'Terms',
+    href: '/terms',
+  },
+  {
+    name: 'Privacy',
+    href: '/privacy',
   },
 ]
 
@@ -71,10 +93,7 @@ export const Footer = () => {
       css={{
         borderTop: '1px solid $gray7',
         borderStyle: 'solid',
-        p: '$5',
-        '@lg': {
-          p: '$6',
-        },
+        pt: '$5',
         flexDirection: 'column',
         alignItems: 'flex-start',
         gap: 36,
@@ -84,7 +103,7 @@ export const Footer = () => {
         },
       }}
     >
-      <Flex css={{ gap: 80, '@bp600': { gap: 136 } }}>
+      <Flex css={{ gap: 40, '@bp600': { gap: 136 }, flexWrap: 'wrap' }}>
         <Flex direction="column">
           <SectionTitle title="Developers" />
           {developerSectionLinks.map((props) => (
@@ -92,25 +111,81 @@ export const Footer = () => {
           ))}
         </Flex>
         <Flex direction="column">
-          <SectionTitle title="Company" />
+          <SectionTitle title="Protocol" />
           {companySectionLinks.map((props) => (
             <SectionLink key={props.name} {...props} />
           ))}
+        </Flex>
+        <Flex direction="column">
+          <Flex direction="column">
+            <SectionTitle title="Resources" />
+            {resourcesSectionLinks.map((props) => (
+              <SectionLink key={props.name} {...props} />
+            ))}
+          </Flex>
         </Flex>
       </Flex>
       <Flex
         direction="column"
         css={{ alignItems: 'flex-start', '@bp600': { alignItems: 'flex-end' } }}
       >
-        <SectionTitle title="Join Reservoir Community" />
+        <SectionTitle title="Community" />
         <Flex css={{ gap: '$4', mt: 16 }}>
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://twitter.com/reservoir0x"
+            href="https://X.com/NFTEarth_L2"
+            aria-label="Twitter"
           >
-            <Button size="xs" color="gray3">
+            <Button
+              size="xs"
+              color="gray3"
+              css={{
+                '&:hover': {
+                  background: '$gray8',
+                },
+              }}
+              aria-label="X"
+            >
               <FontAwesomeIcon icon={faTwitter} width={14} height={14} />
+            </Button>
+          </a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://discord.gg/56a7u3wDkX"
+            aria-label="Discord"
+          >
+            <Button
+              size="xs"
+              color="gray3"
+              css={{
+                '&:hover': {
+                  background: '$gray8',
+                },
+              }}
+              aria-label="Discord"
+            >
+              <FontAwesomeIcon icon={faDiscord} width={14} height={14} />
+            </Button>
+          </a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://t.me/nftearth_community"
+            aria-label="Discord"
+          >
+            <Button
+              size="xs"
+              color="gray3"
+              css={{
+                '&:hover': {
+                  background: '$gray8',
+                },
+              }}
+              aria-label="Telegram"
+            >
+              <FontAwesomeIcon icon={faTelegramPlane} width={14} height={14} />
             </Button>
           </a>
         </Flex>
